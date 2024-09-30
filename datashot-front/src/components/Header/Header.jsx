@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
-import { FaSun, FaMoon } from 'react-icons/fa';
+import { FaMoon } from 'react-icons/fa';
+import { LuSun } from "react-icons/lu";
 import './Header.scss';
 
 const Header = () => {
@@ -18,7 +19,7 @@ const Header = () => {
     <header>
       <h1 className='main-title'>DataShot</h1>
       <button onClick={toggleDarkMode} className="theme-toggle">
-        {darkMode ? <FaSun /> : <FaMoon />}
+        {darkMode ? <LuSun /> : <FaMoon />}
       </button>
     </header>
   );
