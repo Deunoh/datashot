@@ -8,6 +8,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: v.$bg-light;
+  color: v.$text-light;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode {
+  background-color: v.$bg-dark;
+  color: v.$text-dark;
 }
 
 code {
