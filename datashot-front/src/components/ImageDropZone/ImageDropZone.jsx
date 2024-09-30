@@ -2,8 +2,9 @@ import { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import './ImageDropZone.scss';
 import Loader from '../Loader/Loader';
+import EXIF from 'exif-js';
 
-const ImageDropZone = () => {
+const ImageDropZone = ({ onExifData }) => {
   const [image, setImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -24,6 +25,12 @@ const ImageDropZone = () => {
         setIsLoading(false);
       };
       img.src = e.target.result;
+
+      // Extraction des données EXIF
+      EXIF.getData(file, function() {
+        const exifData = EXIF.getAllTags(this);
+        onExifData(exifData);
+      });
     };
 
     reader.readAsDataURL(file);
@@ -31,7 +38,9 @@ const ImageDropZone = () => {
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
-    accept: 'image/*',
+    accept: {
+      'image/*': ['.jpeg', '.jpg', '.png']
+    },
     multiple: false
   });
 
