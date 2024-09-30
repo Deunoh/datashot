@@ -1,0 +1,34 @@
+@use '../../styles/variables' as v;
+.infos-container{
+  width: 80%;
+  height: fit-content;
+  padding: 1rem;
+  margin: auto;
+  border-radius: 20px;
+  background-color: v.$container-light;
+  border: 1px solid v.$border-color;
+  .infos-title{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+
+  .infos-list-container{
+    display: flex;
+    justify-content: space-around;
+    ul{
+      li{
+        margin-bottom: 1rem;
+        font-size: 1rem;
+        display: flex;
+        gap: 0.5rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .infos-list-container{
+    flex-direction: column;
+  }
+}

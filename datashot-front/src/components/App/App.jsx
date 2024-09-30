@@ -2,6 +2,7 @@ import { useState } from "react";
 import Header from "../Header/Header";
 import ImageDropZone from "../ImageDropZone/ImageDropZone";
 import "./App.scss";
+import ImageInfos from "../ImageInfos/ImageInfos";
 
 function App() {
   const [exifData, setExifData] = useState(null);
@@ -17,6 +18,7 @@ function App() {
     <>
        <Header/>
        <ImageDropZone onExifData={handleExifData} />
+       <ImageInfos />
     </>
  
   )
