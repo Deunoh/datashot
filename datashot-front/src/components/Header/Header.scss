@@ -1,0 +1,11 @@
+@use '../../styles/variables' as v;
+body header{
+  margin-top: 1rem !important;
+  height: 40px;
+  display: flex;
+  margin: auto;
+  //background-color: v.$bg-dark;
+  width: 50%;
+  border-radius: 25px;
+  border: 1px solid #e5e7eb;
+}
