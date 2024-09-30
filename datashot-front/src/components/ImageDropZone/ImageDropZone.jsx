@@ -1,8 +1,8 @@
 import { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
+import ExifReader from 'exifreader';
 import './ImageDropZone.scss';
 import Loader from '../Loader/Loader';
-import EXIF from 'exif-js';
 
 const ImageDropZone = ({ onExifData }) => {
   const [image, setImage] = useState(null);
@@ -11,30 +11,28 @@ const ImageDropZone = ({ onExifData }) => {
   const onDrop = useCallback((acceptedFiles) => {
     const file = acceptedFiles[0];
     const reader = new FileReader();
-
     setIsLoading(true);
 
-    reader.onload = (e) => {
+    reader.onload = async (e) => {
       const img = new Image();
       img.onload = () => {
-        setImage({
-          src: e.target.result,
-          width: img.width,
-          height: img.height
-        });
+        setImage({ src: e.target.result, width: img.width, height: img.height });
         setIsLoading(false);
       };
       img.src = e.target.result;
 
-      // Extraction des données EXIF
-      EXIF.getData(file, function() {
-        const exifData = EXIF.getAllTags(this);
-        onExifData(exifData);
-      });
+      // Extraction des données EXIF avec ExifReader
+      try {
+        const tags = await ExifReader.load(file);
+        onExifData(tags);
+      } catch (error) {
+        console.error('Erreur lors de la lecture des données EXIF:', error);
+        onExifData(null);
+      }
     };
 
     reader.readAsDataURL(file);
-  }, []);
+  }, [onExifData]);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
