@@ -4,6 +4,7 @@ import Header from "../Header/Header";
 import ImageDropZone from "../ImageDropZone/ImageDropZone";
 import "./App.scss";
 import ImageInfos from "../ImageInfos/ImageInfos";
+import Map from "../Map/Map";
 
 function App() {
   const [exifData, setExifData] = useState(null);
@@ -31,8 +32,11 @@ function App() {
     setExifData(null);
   };
 
-  console.log('EXIF', exifData);
-  
+  const hasValidGpsData = exifData && 
+  exifData.GPSLatitude && 
+  exifData.GPSLatitude.description &&
+  exifData.GPSLongitude && 
+  exifData.GPSLongitude.description;
 
   return (
     <div className={`app ${darkMode ? 'dark-mode' : ''}`}>
@@ -44,6 +48,12 @@ function App() {
     />
     {image && <ImageInfos exifData={exifData} darkMode={darkMode} />}
     {image && <IoCameraReverse className="reload-btn" size={40} onClick={handleReset} />}
+    {image && hasValidGpsData && (
+        <Map 
+          latitude={parseFloat(exifData.GPSLatitude.description)} 
+          longitude={parseFloat(exifData.GPSLongitude.description)} 
+        />
+      )}
   </div>
  
   )
