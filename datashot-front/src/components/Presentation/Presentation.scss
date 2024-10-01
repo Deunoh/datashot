@@ -1,0 +1,49 @@
+@use '../../styles/variables' as v;
+
+.presentation-container {
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  line-height: 1.3;
+  color: #333;
+}
+
+.presentation-title {
+  font-size: 24px;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.presentation-paragraph {
+  margin-bottom: 15px;
+}
+
+.presentation-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 20px;
+
+  li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+
+    span[role="img"] {
+      margin-right: 10px;
+      font-size: 1.2em;
+    }
+  }
+}
+
+// Ajouter des styles pour le mode sombre si nécessaire
+.dark-mode {
+  .presentation-container {
+    color: v.$title-dark;
+  }
+
+  .presentation-title {
+    color: v.$title-dark;
+  }
+}

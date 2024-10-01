@@ -14,7 +14,7 @@ const ImageInfos = ({ exifData, darkMode }) => {
 
   return (
     <div className={`infos-container ${darkMode ? 'dark-mode' : ''}`}>
-      <h2 className='infos-title'>Informations EXIF</h2>
+      <h3 className='infos-title'>Informations EXIF</h3>
       <div className="infos-list-container">
         <ul>
           <li><FaCamera /> {getExifValue(exifData?.Model, 'Appareil inconnu')}</li>
@@ -36,7 +36,7 @@ const ImageInfos = ({ exifData, darkMode }) => {
 };
 
 ImageInfos.propTypes = {
-  exifData: PropTypes.object, // Changé pour accepter l'objet complet d'exifReader
+  exifData: PropTypes.object, 
   darkMode: PropTypes.bool.isRequired
 };
 

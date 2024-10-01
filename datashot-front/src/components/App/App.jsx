@@ -5,6 +5,8 @@ import ImageDropZone from "../ImageDropZone/ImageDropZone";
 import "./App.scss";
 import ImageInfos from "../ImageInfos/ImageInfos";
 import Map from "../Map/Map";
+import Footer from "../Footer/Footer";
+import Presentation from "../Presentation/Presentation";
 
 function App() {
   const [exifData, setExifData] = useState(null);
@@ -41,6 +43,7 @@ function App() {
   return (
     <div className={`app ${darkMode ? 'dark-mode' : ''}`}>
     <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+    {!image && <Presentation darkMode={darkMode} />}
     <ImageDropZone 
       onExifData={handleExifData} 
       image={image} 
@@ -54,6 +57,7 @@ function App() {
           longitude={parseFloat(exifData.GPSLongitude.description)} 
         />
       )}
+    <Footer />
   </div>
  
   )

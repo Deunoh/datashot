@@ -1,4 +1,5 @@
 import './Map.scss';
+import PropTypes from 'prop-types';
 import { MapContainer, Marker, TileLayer, Popup } from 'react-leaflet'
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -43,5 +44,8 @@ const Map = ({ latitude, longitude }) => {
   )
 };
 
-
+Map.propTypes = {
+  latitude: PropTypes.number.isRequired,
+  longitude: PropTypes.number.isRequired,
+}
 export default Map;
