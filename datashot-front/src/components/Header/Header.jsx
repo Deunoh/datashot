@@ -1,20 +1,9 @@
-
-import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { FaMoon } from 'react-icons/fa';
 import { LuSun } from "react-icons/lu";
 import './Header.scss';
 
-const Header = () => {
-  const [darkMode, setDarkMode] = useState(false);
-
-  useEffect(() => {
-    document.body.classList.toggle('dark-mode', darkMode);
-  }, [darkMode]);
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
-
+const Header = ({ darkMode, toggleDarkMode }) => {
   return (
     <header>
       <h1 className='main-title'>DataShot.</h1>
@@ -24,5 +13,10 @@ const Header = () => {
     </header>
   );
 }
+
+Header.propTypes = {
+  darkMode: PropTypes.bool.isRequired,
+  toggleDarkMode: PropTypes.func.isRequired
+};
 
 export default Header;

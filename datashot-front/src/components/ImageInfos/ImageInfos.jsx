@@ -1,12 +1,13 @@
 import './ImageInfos.scss';
+import PropTypes from 'prop-types';
 import { FaCamera, FaRulerHorizontal, FaBolt, FaLaptopCode } from "react-icons/fa";
 import { IoIosAperture } from "react-icons/io";
 import { MdOutlineShutterSpeed, MdExposure, MdOutlineWbIridescent } from "react-icons/md";
 import { SiSocialblade } from "react-icons/si";
 import { BsCameraVideoFill } from "react-icons/bs";
 
-const ImageInfos = () => {
-  return <div className='infos-container'>
+const ImageInfos = ({ exifData, darkMode }) => {
+  return <div className={`infos-container ${darkMode ? 'dark-mode' : ''}`}>
     <h2 className='infos-title'>Informations EXIF</h2>
     <div className="infos-list-container">
       <ul>
@@ -27,5 +28,21 @@ const ImageInfos = () => {
     </div>
   </div>
 }
+
+ImageInfos.propTypes = {
+  exifData: PropTypes.shape({
+    camera: PropTypes.string,
+    aperture: PropTypes.string,
+    shutterSpeed: PropTypes.string,
+    iso: PropTypes.string,
+    focalLength: PropTypes.string,
+    lens: PropTypes.string,
+    exposure: PropTypes.string,
+    whiteBalance: PropTypes.string,
+    flash: PropTypes.string,
+    software: PropTypes.string
+  }),
+  darkMode: PropTypes.bool.isRequired
+};
 
 export default ImageInfos;

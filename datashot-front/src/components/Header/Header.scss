@@ -8,7 +8,7 @@ body header {
   justify-content: space-between;
   align-items: center;
   margin: 1rem auto;
-  width: 70%;
+  width: 80%;
   border-radius: 25px;
   border: 1px solid v.$border-color;
   background-color: rgba(255, 255, 255, 0.1);
@@ -18,10 +18,10 @@ body header {
   .main-title {
     color: v.$title-light;
     font-family: "Oswald", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-  font-size: 1.5rem;
-  font-weight: bold;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 1.5rem;
+    font-weight: bold;
   }
 
   .theme-toggle {
