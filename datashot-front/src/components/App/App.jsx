@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { IoCameraReverse } from "react-icons/io5";
 import Header from "../Header/Header";
 import ImageDropZone from "../ImageDropZone/ImageDropZone";
 import "./App.scss";
@@ -25,6 +26,11 @@ function App() {
     setImage(imageData);
   };
 
+  const handleReset = () => {
+    setImage(null);
+    setExifData(null);
+  };
+
   console.log('EXIF', exifData);
   
 
@@ -37,7 +43,7 @@ function App() {
       onImageChange={handleImageChange} 
     />
     {image && <ImageInfos exifData={exifData} darkMode={darkMode} />}
-    
+    {image && <IoCameraReverse className="reload-btn" size={40} onClick={handleReset} />}
   </div>
  
   )
