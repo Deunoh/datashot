@@ -36,7 +36,8 @@ function App() {
       image={image} 
       onImageChange={handleImageChange} 
     />
-    <ImageInfos exifData={exifData} darkMode={darkMode} />
+    {image && <ImageInfos exifData={exifData} darkMode={darkMode} />}
+    
   </div>
  
   )
