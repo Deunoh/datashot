@@ -17,7 +17,7 @@ const Header = () => {
 
   return (
     <header>
-      <h1 className='main-title'>DataShot</h1>
+      <h1 className='main-title'>DataShot.</h1>
       <button onClick={toggleDarkMode} className="theme-toggle">
         {darkMode ? <LuSun /> : <FaMoon />}
       </button>

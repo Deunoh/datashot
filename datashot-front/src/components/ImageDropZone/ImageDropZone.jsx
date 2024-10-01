@@ -1,11 +1,12 @@
 import { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import ExifReader from 'exifreader';
+import PropTypes from 'prop-types';
 import './ImageDropZone.scss';
 import Loader from '../Loader/Loader';
 
-const ImageDropZone = ({ onExifData }) => {
-  const [image, setImage] = useState(null);
+const ImageDropZone = ({ onExifData, onImageChange, image }) => {
+  
   const [isLoading, setIsLoading] = useState(false);
 
   const onDrop = useCallback((acceptedFiles) => {
@@ -16,7 +17,7 @@ const ImageDropZone = ({ onExifData }) => {
     reader.onload = async (e) => {
       const img = new Image();
       img.onload = () => {
-        setImage({ src: e.target.result, width: img.width, height: img.height });
+        onImageChange({ src: e.target.result, width: img.width, height: img.height });
         setIsLoading(false);
       };
       img.src = e.target.result;
@@ -32,7 +33,7 @@ const ImageDropZone = ({ onExifData }) => {
     };
 
     reader.readAsDataURL(file);
-  }, [onExifData]);
+  }, [onExifData, onImageChange]);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
@@ -69,6 +70,17 @@ const ImageDropZone = ({ onExifData }) => {
       )}
     </div>
   );
+};
+
+
+ImageDropZone.propTypes = {
+  onExifData: PropTypes.func.isRequired,
+  onImageChange: PropTypes.func.isRequired,
+  image: PropTypes.shape({
+    src: PropTypes.string.isRequired,
+    width: PropTypes.number.isRequired,
+    height: PropTypes.number.isRequired
+  })
 };
 
 export default ImageDropZone;

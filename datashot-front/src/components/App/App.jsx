@@ -6,9 +6,14 @@ import ImageInfos from "../ImageInfos/ImageInfos";
 
 function App() {
   const [exifData, setExifData] = useState(null);
+  const [image, setImage] = useState(null);
 
   const handleExifData = (exifData) => {
     setExifData(exifData);
+  };
+
+  const handleImageChange = (imageData) => {
+    setImage(imageData);
   };
 
   console.log('EXIF', exifData);
@@ -17,7 +22,7 @@ function App() {
   return (
     <>
        <Header/>
-       <ImageDropZone onExifData={handleExifData} />
+       <ImageDropZone onExifData={handleExifData} image={image} onImageChange={handleImageChange} />
        <ImageInfos />
     </>
  
