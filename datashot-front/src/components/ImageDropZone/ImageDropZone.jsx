@@ -39,8 +39,7 @@ const ImageDropZone = ({ onExifData, onImageChange, image }) => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: {
-      'image/*': ['.jpeg', '.jpg', '.png', '.heic', '.heif'],
-      'application/octet-stream': ['.heic']
+      'image/*': ['.jpeg', '.jpg', '.png'],
     },
     multiple: false
   });
