@@ -46,6 +46,8 @@ const ImageDropZone = ({ onExifData, onImageChange, image }) => {
   });
 
   return (
+    <>
+    {isLoading && <Loader message="Chargement de l'image..." />}
     <div className="image-drop-zone">
       {!image && (<div {...getRootProps()} className={`dropzone ${isDragActive ? 'active' : ''}`}>
         <input {...getInputProps()} />
@@ -58,7 +60,6 @@ const ImageDropZone = ({ onExifData, onImageChange, image }) => {
             </div>
           )}
       </div>)}
-      {isLoading && <Loader message="Chargement de l'image..." />}
       {image && !isLoading &&(
         <div className="image-preview">
           <img
@@ -74,6 +75,7 @@ const ImageDropZone = ({ onExifData, onImageChange, image }) => {
         </div>
       )}
     </div>
+    </>
   );
 };
 
