@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react';
+import { PiCameraPlusFill } from "react-icons/pi";
 import { useDropzone } from 'react-dropzone';
 import ExifReader from 'exifreader';
 import PropTypes from 'prop-types';
@@ -38,7 +39,8 @@ const ImageDropZone = ({ onExifData, onImageChange, image }) => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: {
-      'image/*': ['.jpeg', '.jpg', '.png']
+      'image/*': ['.jpeg', '.jpg', '.png', '.heic', '.heif'],
+      'application/octet-stream': ['.heic']
     },
     multiple: false
   });
@@ -47,11 +49,14 @@ const ImageDropZone = ({ onExifData, onImageChange, image }) => {
     <div className="image-drop-zone">
       {!image && (<div {...getRootProps()} className={`dropzone ${isDragActive ? 'active' : ''}`}>
         <input {...getInputProps()} />
-        {
-          isDragActive ?
-            <p>Déposez la photo ici ...</p> :
-            <p>Glissez et déposez une image ici, ou cliquez pour sélectionner une image</p>
-        }
+        {isDragActive ? (
+            <p>Déposez la photo ici ...</p>
+          ) : (
+            <div className="dropzone-content">
+              <PiCameraPlusFill size={50} />
+              <p>Glissez et déposez une image ici, ou cliquez pour sélectionner une image</p>
+            </div>
+          )}
       </div>)}
       {isLoading && <Loader message="Chargement de l'image..." />}
       {image && !isLoading &&(

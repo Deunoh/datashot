@@ -4,10 +4,14 @@
   margin: 0 auto 2rem;
 
   .dropzone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
     border: 2px dashed #cccccc;
     border-radius: 4px;
     padding: 20px;
-    text-align: center;
+    // text-align: center;
     cursor: pointer;
     transition: border 0.3s ease;
 
@@ -18,6 +22,15 @@
     p {
       margin: 0;
       color: #666666;
+    }
+
+    .dropzone-content{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      gap: 10px;
     }
   }
 
