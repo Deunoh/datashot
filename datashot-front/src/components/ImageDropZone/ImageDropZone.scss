@@ -8,12 +8,18 @@
     align-items: center;
     justify-content: center;
     height: 250px;
-    border: 2px dashed #cccccc;
-    border-radius: 4px;
+    //border: 2px dashed #cccccc;
+    border: 1px solid #cccccc;
+    -webkit-box-shadow: inset 0px 0px 11px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset 0px 0px 11px 0px rgba(0,0,0,0.75);
+    box-shadow: inset 0px 0px 11px 0px rgba(0,0,0,0.75);
+    border-radius: 25px;
     padding: 20px;
     // text-align: center;
     cursor: pointer;
     transition: border 0.3s ease;
+    
+
 
     &.active {
       border-color: #2196f3;
@@ -22,6 +28,7 @@
     p {
       margin: 0;
       color: #666666;
+      text-align: center;
     }
 
     .dropzone-content{
