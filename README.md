@@ -2,6 +2,8 @@
 
 Bienvenue sur **DataShot**, une application web qui permet d'explorer les métadonnées EXIF de vos photos de manière simple, rapide et sans inscription. 
 
+Site accessible ici :  <https://data-shot.fr/>
+
 ## Fonctionnalités
 
 - 📷 **Appareil photo et objectif** : Consultez les informations sur l'appareil et l'objectif utilisés pour capturer la photo.
